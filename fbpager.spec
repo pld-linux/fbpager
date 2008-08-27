@@ -4,8 +4,11 @@ Version:	0.1.4
 Release:	1
 License:	MIT
 Group:		X11/Window Managers/Tools
-Source0:	http://fluxbox.org/download/%{name}-%{version}.tar.gz
+# Source0:	http://fluxbox.org/download/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.man.szczecin.pl/pub/FreeBSD/ports/distfiles/%{name}-%{version}.tar.gz
 # Source0-md5:	89aac82e217ef366634dfd768b1b5dff
+Patch0:		%{name}-gcc43.patch
+Patch1:		%{name}-namespace.patch
 URL:		http://fluxbox.sourceforge.net/fbpager/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -19,6 +22,8 @@ fbpager is a pager for Fluxbox with support of the following features:
 
 %prep
 %setup -q
+%patch0 -p0
+%patch1 -p0
 
 %build
 %configure
